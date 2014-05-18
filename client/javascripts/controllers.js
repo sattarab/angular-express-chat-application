@@ -24,6 +24,21 @@ angular.module('app.controllers', ['app.factory'])
         })
     });
 
+    socket.on('user:left', function(data){
+        $scope.messages.push({
+          user: 'chatroom',
+          message: data.user + ' has left.'
+        });
+        var i, user;
+        for (i = 0; i < $scope.users.length; i++) {
+          user = $scope.users[i];
+          if (user === data.user) {
+            $scope.users.splice(i, 1);
+            break;
+          }
+        }
+    });
+    
     $scope.sendMessage = function(){
         socket.emit('user:message', {
             user: $scope.name,
@@ -36,6 +51,5 @@ angular.module('app.controllers', ['app.factory'])
         });
         
         $scope.message = '';
-    };
-    
+    };    
 }])

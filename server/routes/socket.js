@@ -93,9 +93,11 @@ module.exports = function (socket){
         });
         
         socket.on('disconnect', function(){
-            socket.broadcast.emit('user:left', function (){
-                userService.free(name)
-            })
+            console.log('in disconnect');
+            socket.broadcast.emit('user:left', {
+                user: name
+            });
+            userService.free(name);
         });
         
         socket.on('session:truncate', function(){

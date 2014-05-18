@@ -34,4 +34,7 @@ var server = http.createServer(app).listen(app.get('port'), function() {
 });
 io = io.listen(server);
 io.set('transports',['xhr-polling']);
+io.set('polling duration', 10);
+io.set('hearbeat timeout', 30);
+io.set('close')
 io.sockets.on('connection', socket);
