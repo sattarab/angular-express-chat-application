@@ -11,6 +11,7 @@ angular.module('app.controllers', ['app.factory'])
     
     socket.on('user:join', function (data){
         $scope.messages.push({
+            src: '../images/notification.png',
             user: 'chatroom',
             message: data.name + ' has joined the chatroom'
         });
@@ -19,6 +20,7 @@ angular.module('app.controllers', ['app.factory'])
     
     socket.on('user:message', function (data){
         $scope.messages.push({
+            src: '../images/facebook-avatar.png',
             user: data.user,
             message: data.message
         })
@@ -26,8 +28,9 @@ angular.module('app.controllers', ['app.factory'])
 
     socket.on('user:left', function(data){
         $scope.messages.push({
-          user: 'chatroom',
-          message: data.user + ' has left.'
+            src: '../images/notification.png',
+            user: 'chatroom',
+            message: data.user + ' has left.'
         });
         
         var i, user;
@@ -55,6 +58,7 @@ angular.module('app.controllers', ['app.factory'])
         });
         
         $scope.messages.push({
+            src: '../images/facebook-avatar.png',
             user: $scope.name,
             message: $scope.message
         });
@@ -83,6 +87,7 @@ angular.module('app.controllers', ['app.factory'])
         });
         
         $scope.messages.push({
+            src: '../images/facebook-avatar.png',
             user: $scope.newname,
             message: $scope.name + ' has changed the name to ' + $scope.newname
         });
