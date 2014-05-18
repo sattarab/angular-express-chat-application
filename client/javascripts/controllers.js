@@ -29,6 +29,7 @@ angular.module('app.controllers', ['app.factory'])
           user: 'chatroom',
           message: data.user + ' has left.'
         });
+        
         var i, user;
         for (i = 0; i < $scope.users.length; i++) {
           user = $scope.users[i];
@@ -38,6 +39,14 @@ angular.module('app.controllers', ['app.factory'])
           }
         }
     });
+    
+    socket.on('user:changename', function (data){
+        var index = $scope.users.indexOf(data.oldname);
+        if (index != -1){
+            $scope.users.splice(index, 1);
+            $scope.users.push(data.name);
+        }
+    })
     
     $scope.sendMessage = function(){
         socket.emit('user:message', {
@@ -51,5 +60,34 @@ angular.module('app.controllers', ['app.factory'])
         });
         
         $scope.message = '';
-    };    
+    };
+    
+    $scope.changeName = function(){
+        socket.emit('user:changename', {
+            name: $scope.newname
+        });
+        
+        var i, user;
+        for (i = 0; i < $scope.users.length; i++) {
+          user = $scope.users[i];
+          if (user === $scope.name) {
+            $scope.users.splice(i, 1);
+            break;
+          }
+        }
+        $scope.users.push($scope.newname);
+        
+        socket.emit('user:message', {
+            user: $scope.newname,
+            message: $scope.name + ' has changed the name to ' + $scope.newname
+        });
+        
+        $scope.messages.push({
+            user: $scope.newname,
+            message: $scope.name + ' has changed the name to ' + $scope.newname
+        });
+        
+        $scope.name = $scope.newname;
+        $scope.newname = '';
+    }
 }])

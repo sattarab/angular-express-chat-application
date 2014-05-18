@@ -24,7 +24,7 @@ var userService = (function (){
     }
     
     var free = function (name){
-        if (name){
+        if (names[name]){
             delete names[name];
         }
     }
@@ -57,6 +57,7 @@ var userService = (function (){
 
 module.exports = function (socket){
         var name = userService.getname();
+        var oldname;
         
         socket.emit('init', {
             name: name,
@@ -76,19 +77,17 @@ module.exports = function (socket){
             })
         });
         
-        socket.on('user:changename', function (data, fn){
+        socket.on('user:changename', function (data){
             if (!userService.isalloted(data.name)){
-                var oldname = name;
+                oldname = name;
                 userService.free(name);
-                var name = data.name;
-                socket.emit.broadcast('user:changename', {
+                name = data.name;
+                console.log('oldname: ' + oldname);
+                console.log('name: ' + name);
+                socket.broadcast.emit('user:changename', {
                     oldname: oldname,
                     name: name
                 });
-                fn(true);
-            }
-            else{
-                fn(false);
             }
         });
         
