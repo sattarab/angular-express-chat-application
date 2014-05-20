@@ -36,9 +36,13 @@ ul
 }
 .message-box{
     height: 250px; 
-    width: 500px; 
+    width: 450px; 
     overflow-y: scroll; 
     border: 2px solid; 
     border-radius: 10px;
     box-shadow: 2px 2px 5px #888888;
+    margin-top: 20px;
+}
+.edit-box{
+    margin-top: 80px;
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers', ['app.factory'])
-.controller('HomeCtrl', ['$scope', 'socket', function ($scope, socket){
+.controller('HomeCtrl', ['$scope', '$anchorScroll', '$location', 'socket', function ($scope, $anchorScroll, $location, socket){
     $scope.messages = [];
     
     socket.on('init', function (data){
@@ -62,7 +62,6 @@ angular.module('app.controllers', ['app.factory'])
             user: $scope.name,
             message: $scope.message
         });
-        
         $scope.message = '';
     };
     
