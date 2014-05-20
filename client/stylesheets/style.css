@@ -34,3 +34,11 @@ ul
     border-radius: 15px;
     box-shadow: 2px 2px 5px #888888;
 }
+.message-box{
+    height: 250px; 
+    width: 500px; 
+    overflow-y: scroll; 
+    border: 2px solid; 
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #888888;
+}

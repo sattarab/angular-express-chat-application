@@ -15,31 +15,43 @@
             </ul>
         </div>
     </div>
-    <h4><i class="fa fa-paper-plane fa-2x"></i>&nbsp; Messages</h4>
-    <div>
+    <div class="message-box">
+        <h4>
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-paper-plane-o fa-stack-1x fa-inverse"></i>
+            </span>
+            &nbsp; Messages
+        </h4>
         <ul>
                 <li ng-repeat="message in messages">
-                    <p/>
-                        <small><i class="fa fa-user"></i> {{message.user}} : {{message.message}}</small>
-                    </p>
+                        <p>
+                            <small><i class="fa fa-user"></i> {{message.user}} : {{message.message}}</small>
+                        </p>
                 </li>
         </ul>
     </div>
-    <form class="form-inline">
+    <form class="form-inline" ng-submit="sendMessage()" style="margin-top: 10px;">
         <div class="form-group">
             <input type="text" class="form-control" ng-model="message" placeholder="Message" required>
         </div>
         <div class="form-group">
-            <small><a ng-click="sendMessage()" class="btn btn-success"><i class="fa fa-paper-plane-o"></i>&nbsp; Send</a></small>
+            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-paper-plane-o"></i>&nbsp;Send</button>
         </div>
     </form>
-    <form class="form-inline">
-        <h4><i class="fa fa-pencil-square-o"></i>&nbsp; Edit</h4>
+    <form class="form-inline" ng-submit="changeName()">
+        <h4>
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-pencil-square-o fa-stack-1x fa-inverse"></i>
+            </span>
+            &nbsp; Edit
+        </h4>
         <div class="form-group">
             <input type="text" class="form-control" ng-model="newname" placeholder="Change Name" required>
         </div>
         <div class="form-group">
-            <small><a ng-click="changeName()" class="btn btn-danger"><i class="fa fa-exchange"></i>&nbsp; Change Name</a></small>
+            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-exchange"></i>&nbsp;Change Name</button>
         </div>
     </form>
 </div>
