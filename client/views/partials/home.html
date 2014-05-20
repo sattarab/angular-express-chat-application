@@ -13,13 +13,15 @@
                     </span>
                     &nbsp; Messages
                 </h4>
-                <ul>
-                        <li ng-repeat="message in messages">
-                                <p id="form">
-                                    <small><i class="fa fa-user"></i> {{message.user}} : {{message.message}}</small>
-                                </p>
-                        </li>
-                </ul>
+                <div scroll-div>
+                    <ul>
+                            <li ng-repeat="message in messages">
+                                    <p>
+                                        <small><i class="fa fa-user"></i> {{message.user}} : {{message.message}}</small>
+                                    </p>
+                            </li>
+                    </ul>
+                </div>
             </div>
             <form class="form-inline" ng-submit="sendMessage()" style="margin-top: 10px;">
                 <div class="form-group">
