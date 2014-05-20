@@ -1,3 +1,6 @@
+Demo:
+http://angular-express-chatroom.herokuapp.com/
+
 Installation Steps:
 
 1. Install NodeJS -- (http://nodejs.org/)
