@@ -28,3 +28,9 @@ ul
    height: 300px;
    width: 100%;
 }
+.user-list{
+    margin-top: 20px;
+    border: 2px solid;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #888888;
+}

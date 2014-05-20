@@ -1,38 +1,45 @@
 <div class="container">
-    <p class="p-custom-2 text-custom-1">USER LIST</p>
-    <ul>
-        <li ng-repeat="user in users">
-            <p class="p-custom text-custom-1"/>
-                {{user}}
-            </p>
-        </li>
-    </ul>
-    <p class="p-custom-2 text-custom-1">MESSAGES</p>
+    <div class="row">
+        <div class="col-sm-offset-10 user-list">
+            <div class="text-center" style="padding-top:5px;">
+                <i class="fa fa-users fa-3x"></i>
+            </div>
+            <ul>
+                <li ng-repeat="user in users">
+                    <small>
+                        <div class="text-left">
+                            <i class="fa fa-user"></i> {{user}}
+                        </div>
+                    </small>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <h4><i class="fa fa-paper-plane fa-2x"></i>&nbsp; Messages</h4>
     <div>
         <ul>
                 <li ng-repeat="message in messages">
-                    <p class="p-custom text-custom-1"/>
-                        <img ng-src="{{message.src}}" style="width:30px">  {{message.user}} : {{message.message}}
+                    <p/>
+                        <small><i class="fa fa-user"></i> {{message.user}} : {{message.message}}</small>
                     </p>
                 </li>
         </ul>
     </div>
-    <form class="form-inline" ng-submit="sendMessage()">
+    <form class="form-inline">
         <div class="form-group">
             <input type="text" class="form-control" ng-model="message" placeholder="Message" required>
         </div>
         <div class="form-group">
-            <input type="submit" value="Send" class="btn btn-success">
+            <small><a ng-click="sendMessage()" class="btn btn-success"><i class="fa fa-paper-plane-o"></i>&nbsp; Send</a></small>
         </div>
     </form>
-    <br>
-    <form class="form-inline" ng-submit="sendMessage()">
-        <p class="p-custom-2 text-custom-1">TO CHANGE NAME PLEASE FILL OUT THE FORM BELOW</p>
+    <form class="form-inline">
+        <h4><i class="fa fa-pencil-square-o"></i>&nbsp; Edit</h4>
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="newname" placeholder="Name" required>
+            <input type="text" class="form-control" ng-model="newname" placeholder="Change Name" required>
         </div>
         <div class="form-group">
-            <input type="submit" value="Change Name" class="btn btn-danger">
+            <small><a ng-click="changeName()" class="btn btn-danger"><i class="fa fa-exchange"></i>&nbsp; Change Name</a></small>
         </div>
     </form>
 </div>

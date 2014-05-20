@@ -30,7 +30,7 @@ angular.module('app.controllers', ['app.factory'])
         $scope.messages.push({
             src: '../images/notification.png',
             user: 'chatroom',
-            message: data.user + ' has left.'
+            message: data.user + ' has left'
         });
         
         var i, user;
