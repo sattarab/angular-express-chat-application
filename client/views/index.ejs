@@ -6,6 +6,7 @@
     <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'/>
     <link href='//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="components/nvd3/nv.d3.css"/>
     <style type="text/css">
           [scroll-div]{
             height: 165px;
@@ -14,7 +15,8 @@
     </style>
     <!-- scripts -->
     <!-- meta -->
-    <meta name="Description" content="MagniSci simiplifies scientific image analysis">
+    <meta charset="utf-8">
+    <meta name="Description" content="Chat application">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="msvalidate.01" content="D05BC4FC5F616D6A06301CBDF35CF039" /><!--meta tag for bing-->
   </head>
@@ -22,11 +24,14 @@
     <div>
         <ng-view></ng-view>
     </div>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-animate.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-cookies.min.js"></script>
+    <script src="components/d3/d3.js"></script>
+    <script src="components/nvd3/nv.d3.js"></script>
+    <script src="components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="javascripts/directives.js"></script>
     <script type="text/javascript" src="javascripts/factory.js"></script>

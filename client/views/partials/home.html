@@ -1,8 +1,16 @@
 <div class="container">
-    <div class="text-center">
-        <h2><i class="fa fa-weixin"></i>&nbsp; ng-chat</h2>
-        <h4>A responsive chat room built in AngularJS + NodeJS + Bootstrap</h4>
-    </div>
+    <h4 class="text-center"> RealTime graph of number of users in the chatroom</h4>
+    <nvd3-line-chart
+            ng-model="timeData"
+            data="timeData"
+            showXAxis="true"
+            showYAxis="true"
+            tooltips="true"
+            objectequality="true"
+            xAxisTickFormat="xAxisTickFormat_Time_Format()"
+            interactive="true">
+    </nvd3-line-chart>
+    <hr>
     <div class="row">
         <div class="col-xs-12 col-sm-4">
             <div class="message-box" id="message-box">
@@ -47,8 +55,8 @@
                 </div>
             </form>
         </div>
-        <div class="user-list hidden-xs col-xs-12 col-sm-offset-4 col-sm-2">
-            <div class="text-center" style="padding-top:5px;">
+        <div class="user-list col-xs-12 col-sm-offset-4 col-sm-2">
+            <div class=" hidden-xs text-center" style="padding-top:5px;">
                 <i class="fa fa-users fa-3x"></i>
             </div>
             <ul>

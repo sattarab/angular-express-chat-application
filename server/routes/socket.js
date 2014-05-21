@@ -1,5 +1,6 @@
 var userService = (function (){
     var names = {};
+    var time = 0;
     
     var isalloted = function (name){
         if (!name || names[name]){ 
@@ -50,7 +51,8 @@ var userService = (function (){
         getname: getname,
         free: free,
         freeall: freeall,
-        get: get
+        get: get,
+        time: time
     }
     
 }());
@@ -58,14 +60,17 @@ var userService = (function (){
 module.exports = function (socket){
         var name = userService.getname();
         var oldname;
+        console.log('count: ' + userService.get().length);
         
         socket.emit('init', {
             name: name,
-            users: userService.get()
+            users: userService.get(),
+            count: userService.get().length
         });
         
         socket.broadcast.emit('user:join', {
-            name: name
+            name: name,
+            count: userService.get().length
         });
         
         socket.on('user:message', function (data){
@@ -93,10 +98,11 @@ module.exports = function (socket){
         
         socket.on('disconnect', function(){
             console.log('in disconnect');
-            socket.broadcast.emit('user:left', {
-                user: name
-            });
             userService.free(name);
+            socket.broadcast.emit('user:left', {
+                user: name,
+                count: userService.get().length
+            });
         });
         
         socket.on('session:truncate', function(){
