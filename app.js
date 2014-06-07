@@ -3,7 +3,8 @@ http = require('http'),
 path = require('path'),
 logfmt = require('logfmt'),
 app = express(),
-io = require('socket.io'),
+server = http.Server(app),
+io = require('socket.io')(server),
 socket = require('./server/routes/socket');
 
 app.configure(function(){
@@ -29,12 +30,7 @@ if (app.get('env') === 'development') {
 
 require('./routes')(app);
 
-var server = http.createServer(app).listen(app.get('port'), function() {
+server.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
-io = io.listen(server);
-io.set('transports',['xhr-polling']);
-io.set('polling duration', 10);
-io.set('hearbeat timeout', 30);
-io.set('close')
-io.sockets.on('connection', socket);
+io.on('connection', socket);
