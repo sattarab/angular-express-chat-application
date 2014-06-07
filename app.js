@@ -3,8 +3,6 @@ path = require('path'),
 logfmt = require('logfmt'),
 http = require('http'),
 app = express(),
-server = http.Server(app),
-io = require('socket.io')(server),
 socket = require('./server/routes/socket');
 
 app.configure(function(){
@@ -30,7 +28,8 @@ if (app.get('env') === 'development') {
 
 require('./routes')(app);
 
-server.listen(app.get('port'), function() {
+var server = http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
+var io = require('socket.io')(server);
 io.on('connection', socket);
