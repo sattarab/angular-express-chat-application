@@ -1,8 +1,9 @@
 var express = require('express'),
 path = require('path'),
 logfmt = require('logfmt'),
+http = require('http'),
 app = express(),
-server = require('http').createServer(app),
+server = http.Server(app),
 io = require('socket.io')(server),
 socket = require('./server/routes/socket');
 
